@@ -34,18 +34,45 @@ router.post('/register', (req, res) => {
         password: req.body.password
       });
 
+      //generating a salt and hash on seperate function calls
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
           newUser.password = hash;
-          newUser.save()
-          .then(user => res.json(user))
-          .catch((err) => {
-            console.log('ERROR HASHING ', err)
-          })
+          newUser
+            .save()
+            .then(user => res.json(user))
+            .catch(err => {
+              console.log('ERROR HASHING ', err);
+            });
         });
       });
     }
+  });
+});
+
+// @route  GET api/users/login
+// @desc   Login User / Returning JWT Token
+// @access Public
+
+router.post('/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  User.findOne({ email }).then(user => {
+    //Check for user
+    if (!user) {
+      //want to send an error status
+      return res.status(404).json({ email: 'User email not found!' });
+    }
+    //Check Password
+    bcrypt.compare(password, user.password).then(isMatch => {
+      if (isMatch) {
+        res.json({ msg: 'Success' });
+      } else {
+        return res.status(400).json({ password: 'Password incorrect' });
+      }
+    });
   });
 });
 
