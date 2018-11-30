@@ -66,13 +66,10 @@ router.post(
     });
 
     newPost.save().then(post => {
-
       res.json(post);
     });
   }
 );
-
-
 
 // @route  DELETE api/posts/:id
 // @desc   Delete post
@@ -82,10 +79,10 @@ router.delete(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Profile.findOne({ user: req.user.id }).then(profile => {
-      console.log('this is the ID!!', req.params.id)
+      console.log('this is the ID!!', req.params.id);
       Post.findById(req.params.id).then(post => {
         //Check for post owner
-        console.log(post)
+        console.log(post);
         if (post.user.toString() !== req.user.id) {
           return res.status(401).json({ notauthorized: 'User not authorized' });
         }
@@ -112,21 +109,25 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Profile.findOne({ user: req.user.id }).then(profile => {
+      Post.findById(req.params.id)
+        .then(post => {
+          //has user already liked this post?
+          if (
+            post.likes.filter(like => like.user.toString() === req.user.id)
+              .length > 0
+          ) {
+            return res
+              .status(400)
+              .json({ alreadyliked: 'User already liked this post' });
+          }
+          //Add user id to likes array
+          post.likes.unshift({ user: req.user.id });
 
-      Post.findById(req.params.id).then(post => {
-        //has user already liked this post?
-        if(post.likes.filter(like => like.user.toString() === req.user.id).length > 0) {
-          return res.status(400).json( { alreadyliked: 'User already liked this post' })
-        }
-        //Add user id to likes array
-        post.likes.unshift({ user: req.user.id })
-
-        post.save()
-        .then((post) => {
-          res.json(post)
+          post.save().then(post => {
+            res.json(post);
+          });
         })
-      })
-      .catch(err => res.status(404).json({ postnotfound: 'No postfound '}));
+        .catch(err => res.status(404).json({ postnotfound: 'No postfound ' }));
     });
   }
 );
@@ -139,26 +140,63 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Profile.findOne({ user: req.user.id }).then(profile => {
-
-      Post.findById(req.params.id).then(post => {
-        //has user already liked this post?
-        if(post.likes.filter(like => like.user.toString() === req.user.id).length === 0) {
-          return res.status(400).json( { notliked: 'You have not liked this post yet' })
-        }
-        //Get remove index
-        //gives us user we want to remove
-      const removeIndex = post.likes.map(item => item.user.toString()).indexOf(req.user.id)
-        //splice out of array
-        post.likes.splice(removeIndex, 1)
-        //save
-        post.save()
-        .then((post) => {
-          res.json(post)
+      Post.findById(req.params.id)
+        .then(post => {
+          //has user already liked this post?
+          if (
+            post.likes.filter(like => like.user.toString() === req.user.id)
+              .length === 0
+          ) {
+            return res
+              .status(400)
+              .json({ notliked: 'You have not liked this post yet' });
+          }
+          //Get remove index
+          //gives us user we want to remove
+          const removeIndex = post.likes
+            .map(item => item.user.toString())
+            .indexOf(req.user.id);
+          //splice out of array
+          post.likes.splice(removeIndex, 1);
+          //save
+          post.save().then(post => {
+            res.json(post);
+          });
         })
-      })
-      .catch(err => res.status(404).json({ postnotfound: 'No postfound '}));
+        .catch(err => res.status(404).json({ postnotfound: 'No postfound ' }));
     });
   }
 );
+
+// @route  POST api/posts/unlike/:id
+// @desc   Add comment to post
+// @access Private
+router.post('/comment/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const { errors, isValid } = validatePostInput(req.body);
+
+    //Check Validation
+    if (!isValid) {
+      //if any errors, send 400 with errors object
+      return res.status(400).json(errors);
+    }
+  Post.findById(req.params.id)
+    .then((post) => {
+      const newComment = {
+        text: req.body.text,
+        name: req.body.name,
+        avatar: req.body.avatar,
+        user: req.user.id
+      }
+      //Add to comments array
+      post.comments.unshift(newComment)
+      //Save
+      post.save(). then((post) => {
+        res.json(post)
+      })
+      .catch((err) => {
+        res.status(404).json({ postnotfound: 'No post found' })
+      })
+    })
+})
 
 module.exports = router;
