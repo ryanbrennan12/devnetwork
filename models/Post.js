@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//Create Schema
+// Create Schema
 
 const PostSchema = new Schema({
   user: {
@@ -54,5 +54,7 @@ const PostSchema = new Schema({
     default: Date.now
   }
 });
+
+
 
 module.exports = Post = mongoose.model('post', PostSchema);
