@@ -4,6 +4,7 @@ Small social network app built with the MERN stack.
 
 ## Code Style
 
+
 [![Style Guide: Hack Reactor](https://img.shields.io/badge/Style%20Guide-Hack%20Reactor-blue.svg)](https://github.com/hackreactor-labs/eslint-config-hackreactor)
 
 ## Tech/Frameworks used
