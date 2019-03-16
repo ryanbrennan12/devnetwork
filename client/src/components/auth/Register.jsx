@@ -142,3 +142,4 @@ export default connect(mapStateToProps, { registerUser })(Register);
 //testg
 //test
 //test
+//test
