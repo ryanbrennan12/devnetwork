@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
-
+//this will register the user into mongoDB
 //Create Schema
 const UserSchema = new Schema({
   name: {
@@ -23,5 +23,5 @@ const UserSchema = new Schema({
     deafult: Date.now
   }
 });
-
+//set to variable.  pass in name i want to use and then the actual schema
 module.exports = User = mongoose.model('users', UserSchema)
