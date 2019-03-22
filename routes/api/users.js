@@ -30,6 +30,7 @@ router.post('/register', (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors)
   }
+  //first Mongoose will check if the email exists
 
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
@@ -37,8 +38,8 @@ router.post('/register', (req, res) => {
       return res.status(400).json(errors);
     } else {
       const avatar = gravatar.url(req.body.email, {
-        s: '200',
-        r: 'pg',
+        s: '200', //size
+        r: 'pg', //rating
         d: 'mm' //Default
       });
 
@@ -53,9 +54,13 @@ router.post('/register', (req, res) => {
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
+          //hash password with salt
+          //our hash is what we want to store in the database
           newUser.password = hash;
           newUser
             .save()
+            //gives promise back
+            //sending back a successful response with that user
             .then(user => res.json(user))
             .catch(err => {
               console.log('ERROR HASHING ', err);
