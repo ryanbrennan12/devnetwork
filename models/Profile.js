@@ -2,10 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const ProfileSchema = new Schema({
+  //associating everything in the User Schema to the profile
+  //associating user by Id
+  //REFERENCING the "users collection"
   user: {
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
+  //SEO friendly url for profiles
+  //ie - profiles/ryanbrennan
   handle: {
     type: String,
     required: true,
