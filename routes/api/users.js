@@ -94,8 +94,9 @@ router.post('/login', (req, res) => {
     }
     //Check Password
     bcrypt.compare(password, user.password).then(isMatch => {
+      //User Matched
       if (isMatch) {
-        //User Matched
+        //create JWT payload
         const payload = { id: user.id, name: user.name, avatar: user.avatar }
         //Sign Token
         jwt.sign(payload, keys.secret, { expiresIn: 3600 }, (err, token) => {
@@ -105,7 +106,7 @@ router.post('/login', (req, res) => {
           })
         });
       } else {
-        console.log('NOPE')
+
         errors.password = 'Password incorrect'
         return res.status(400).json(errors);
       }
