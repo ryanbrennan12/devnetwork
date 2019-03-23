@@ -90,7 +90,7 @@ router.post('/login', (req, res) => {
     if (!user) {
       //want to send an error status
       errors.email = 'User not found'
-      return res.status(404).json(error);
+      return res.status(404).json(errors);
     }
     //Check Password
     bcrypt.compare(password, user.password).then(isMatch => {
@@ -105,6 +105,7 @@ router.post('/login', (req, res) => {
           })
         });
       } else {
+        console.log('NOPE')
         errors.password = 'Password incorrect'
         return res.status(400).json(errors);
       }
