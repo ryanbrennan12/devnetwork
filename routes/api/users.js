@@ -66,7 +66,7 @@ router.post('/register', (req, res) => {
               console.log('ERROR HASHING ', err);
             });
         });
-      });
+      });//new
     }
   });
 });
