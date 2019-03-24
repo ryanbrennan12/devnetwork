@@ -17,26 +17,26 @@ Example GET request JSON response to `http://localhost:5000/api/profile` with ap
 
 ```json
 {
-  "social": {
-    "linkedin": "https://www.linkedin.com/in/ryansbrennan",
-        "facebook": "https://www.facebook.com/rybrennan444"
+    "social": {
+        "linkedin": "https://www.linkedin.com/in/ryansbrennan",
+        "facebook": "https://www.facebook.com/rybrennan444",
+        "instagram": "https://www.instagram.com/baconlollipops"
     },
     "skills": [
-      "Javascript",
+        "Javascript",
         " HTML5",
-        " CSS",
         " React.js",
         " Redux",
-        "Backbone.js",
+        " Backbone.js",
         " REST",
         " Node.js",
         " MongoDB",
         " MySQL",
-        " Postgresql "
+        " Postgresql"
     ],
     "_id": "5c96d9329c828c183d096c2e",
     "user": {
-      "_id": "5c96d6169c828c183d096c2d",
+        "_id": "5c96d6169c828c183d096c2d",
         "name": "Ryan Brennan",
         "avatar": "//www.gravatar.com/avatar/d2ddde98aaf5e7c02fbecc79883c6c10?s=200&r=pg&d=mm"
     },
@@ -48,7 +48,8 @@ Example GET request JSON response to `http://localhost:5000/api/profile` with ap
     "education": [],
     "date": "2019-03-24T01:11:14.115Z",
     "__v": 0,
-    "githubusername": "ryanbrennan12"
+    "githubusername": "ryanbrennan12",
+    "bio": "I am a Full Stack Engineer who occasionally does not fall down while snowboarding.  Lets make something magical!! Boom!"
 }
 ```
 

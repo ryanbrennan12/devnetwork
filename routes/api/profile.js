@@ -205,7 +205,7 @@ router.post(
   }
 );
 
-// @route  POST api/education
+// @route  POST api/profile/education
 // @desc   Add education to profile
 // @access Private
 router.post(
