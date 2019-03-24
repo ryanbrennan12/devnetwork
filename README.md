@@ -1,39 +1,88 @@
-# Devnetwork
+# Hacktown
 
 Small social network app built with the MERN stack.
 
-## Code Style
+- [1.2. Usage](#13-usage)
+    - [1.2.1. JSON Example](#123-json-example)
+    - [1.2.2. API endpoints](#121-api-endpoints)
+- [1.3. Code Style](#13-code-style)
+- [1.4. Development Setup](#14-development-setup)
 
 
-[![Style Guide: Hack Reactor](https://img.shields.io/badge/Style%20Guide-Hack%20Reactor-blue.svg)](https://github.com/hackreactor-labs/eslint-config-hackreactor)
 
-## Tech/Frameworks used
 
-- [MongoDB](https://docs.mongodb.com/manual/)
-- [Express](http://expressjs.com/)
-- [React](https://reactjs.org/docs/hello-world.html/)
-- [Redux](https://redux.js.org/)
+## 1.2.1 JSON Example
 
-## Code Example
-
-Example JSON response to `http:localhost:5000/api/posts`
+Example GET request JSON response to `http://localhost:5000/api/profile` with appropriate [Bearer token](https://jwt.io/introduction/)
 
 ```json
-[
-  {
-    "_id": "5c09bb6952c59d9b8e82e7a0",
-    "text": "one more time san",
-    "name": "Ryan Brennan",
-    "user": "5c04750d3547353ed1667374",
-    "likes": [],
-    "comments": [],
-    "date": "2018-12-07T00:14:33.477Z",
-    "__v": 0
-  }
-]
+{
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/ryansbrennan",
+        "facebook": "https://www.facebook.com/rybrennan444"
+    },
+    "skills": [
+      "Javascript",
+        " HTML5",
+        " CSS",
+        " React.js",
+        " Redux",
+        "Backbone.js",
+        " REST",
+        " Node.js",
+        " MongoDB",
+        " MySQL",
+        " Postgresql "
+    ],
+    "_id": "5c96d9329c828c183d096c2e",
+    "user": {
+      "_id": "5c96d6169c828c183d096c2d",
+        "name": "Ryan Brennan",
+        "avatar": "//www.gravatar.com/avatar/d2ddde98aaf5e7c02fbecc79883c6c10?s=200&r=pg&d=mm"
+    },
+    "handle": "baconlollipops",
+    "company": "Hack Reactor @ Galvanize",
+    "website": "http://www.ryanbrennan.dev",
+    "status": "Full Stack Software Engineer",
+    "experience": [],
+    "education": [],
+    "date": "2019-03-24T01:11:14.115Z",
+    "__v": 0,
+    "githubusername": "ryanbrennan12"
+}
 ```
 
-## Installing Dependencies
+###  1.2.2 API Endpoints
+
+Below you can find all available endpoints.
+
++ GET `/:trailId/trailStats`
+  - Given a trailId, retrieves stats of trail according reviews given.
++ GET `/:trailId/reviewInfo`
+  - Given a trailId, retrieves review information
++ GET `/:trailId/reviewsNew`
+  - Given a trailId, retrieves all reviews sorted by most recent
++ GET `/:trailId/reviewsOld`
+  - Given a trailId, retrieves all reviews sorted by oldest
++ GET `/:trailId/topReviews`
+  - Given a trailId, retrieves all reviews sorted highest rated
++ GET `/:trailId/bottomReviews`
+  - Given a trailId, retrieves all reviews sorted by lowest rated
+
+## 1.3 Code Style
+
+
+[![Style Guide: Airbnb](https://img.shields.io/badge/Style%20Guide-Airbnb-Red.svg)](https://github.com/airbnb/javascript)
+
+
+## 1.4 Development Setup
+
+This Application uses the following dev stack:
+
+- DB: [MongoDB](https://docs.mongodb.com/manual/)
+- Server: [Express](http://expressjs.com/)
+- Client: [React](http://reactjs.org/) with [Redux](https://redux.js.org/)
+- Deployment: [Elastic Beanstalk on AWS](https://aws.amazon.com/elasticbeanstalk/)
 
 ```sh
 # Install server dependencies

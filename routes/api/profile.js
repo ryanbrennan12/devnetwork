@@ -27,11 +27,13 @@ router.get(
   '/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+    console.log('heyyyy')
     const errors = {};
-
     Profile.findOne({ user: req.user.id })
-      .populate('user', ['name', 'avatar'])
+
+    .populate('user', ['name', 'avatar'])
       .then(profile => {
+
         if (!profile) {
           errors.noprofile = 'There is no profile for this user';
           return res.status(404).json(errors);
@@ -88,6 +90,7 @@ router.get('/user/:user_id', (req, res) => {
   const errors = {};
 
   Profile.findOne({ user: req.params.user_id })
+  //connecting user collection to the Profile Model
     .populate('user', ['name', 'avatar'])
     .then(profile => {
       if (!profile) {
@@ -133,6 +136,7 @@ router.post(
     }
 
     //Social
+    //look at Profile Model. It is its own Object
     profileFields.social = {};
     if (req.body.youtube) profileFields.social.youtube = req.body.youtube;
     if (req.body.twitter) profileFields.social.twitter = req.body.twitter;
@@ -293,13 +297,11 @@ router.delete(
   '/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-   Profile.findOneAndRemove({ user: req.user.id })
-    .then(() => {
-      User.findOneAndRemove({ _id: req.user.id })
-        .then(() => {
-          res.json({ success: true })
-        })
-    })
+    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
+      User.findOneAndRemove({ _id: req.user.id }).then(() => {
+        res.json({ success: true });
+      });
+    });
   }
 );
 
