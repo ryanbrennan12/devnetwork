@@ -11,7 +11,7 @@ Small social network app built with the MERN stack.
 
 
 
-## 1.2.1 JSON Example
+## 1.2.1 JSON Examples
 
 Example GET request JSON response to `http://localhost:5000/api/profile` with appropriate [Bearer token](https://jwt.io/introduction/)
 
@@ -44,13 +44,74 @@ Example GET request JSON response to `http://localhost:5000/api/profile` with ap
     "company": "Hack Reactor @ Galvanize",
     "website": "http://www.ryanbrennan.dev",
     "status": "Full Stack Software Engineer",
-    "experience": [],
-    "education": [],
+    "experience": [
+         {
+            "current": true,
+            "_id": "5c9724501bf7151f7dbdb6c1",
+            "title": "Associate Instructor of Software Engineering",
+            "company": "Hack Reactor at Galvanize Inc",
+            "location": "San Francisco, CA",
+            "from": "2019-02-01T00:00:00.000Z",
+            "description": "Work with students during rigourous software engineering program to prepare them for top engineering positions."
+        }
+    ],
+    "education": [
+        {
+            "current": false,
+            "_id": "5c9726831bf7151f7dbdb6c2",
+            "school": "Villanova University",
+            "degree": "Bachelor of Arts",
+            "fieldofstudy": "Economics",
+            "from": "2009-06-06T00:00:00.000Z",
+            "to": "2013-06-06T00:00:00.000Z",
+            "description": "NCAA Basketball Champs 1985, 2016, 2018. Nbd ¯\_(ツ)_/¯"
+        }
+    ],
     "date": "2019-03-24T01:11:14.115Z",
     "__v": 0,
     "githubusername": "ryanbrennan12",
     "bio": "I am a Full Stack Engineer who occasionally does not fall down while snowboarding.  Lets make something magical!! Boom!"
 }
+```
+
+Example GET request JSON response to `http://localhost:5000/api/posts`
+
+```json
+[
+    {
+        "_id": "5c9729ea1bf7151f7dbdb6c3",
+        "text": "Headed to Tahoe for a couple days. Hmu!",
+        "user": "5c96d6169c828c183d096c2d",
+        "likes": [
+            {
+                "_id": "5c972d301bf7151f7dbdb6c5",
+                "user": "5c971de51bf7151f7dbdb6be"
+            }
+        ],
+        "comments": [
+            {
+                "date": "2019-03-24T07:12:13.123Z",
+                "_id": "5c972dcd1bf7151f7dbdb6c6",
+                "text": "Is Pri Pri going to make it?  Make sure you bring chains!",
+                "name": "Charley Coker",
+                "user": "5c971de51bf7151f7dbdb6be"
+            }
+        ],
+        "date": "2019-03-24T06:55:38.171Z",
+        "__v": 2
+    },
+    {
+        "_id": "5c09bb6952c59d9b8e82e7a0",
+        "text": "one more time san",
+        "name": "Ryan Brennan",
+        "user": "5c04750d3547353ed1667374",
+        "likes": [],
+        "comments": [],
+        "date": "2018-12-07T00:14:33.477Z",
+        "__v": 0
+    }
+]
+
 ```
 
 ###  1.2.2 API Endpoints
