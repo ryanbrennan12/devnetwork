@@ -56,18 +56,56 @@ Example GET request JSON response to `http://localhost:5000/api/profile` with ap
 
 Below you can find all available endpoints.
 
-+ GET `/:trailId/trailStats`
-  - Given a trailId, retrieves stats of trail according reviews given.
-+ GET `/:trailId/reviewInfo`
-  - Given a trailId, retrieves review information
-+ GET `/:trailId/reviewsNew`
-  - Given a trailId, retrieves all reviews sorted by most recent
-+ GET `/:trailId/reviewsOld`
-  - Given a trailId, retrieves all reviews sorted by oldest
-+ GET `/:trailId/topReviews`
-  - Given a trailId, retrieves all reviews sorted highest rated
-+ GET `/:trailId/bottomReviews`
-  - Given a trailId, retrieves all reviews sorted by lowest rated
+
+Public 'profile' routes:
++ GET `/api/profile/test`
+  - Tests profile route
++ GET `/api/profile/all`
+  - Gets all profiles
++ GET `/api/profile/handle/:handle`
+  - Get profile by handle
++ GET `/api/profile/user/:user ID`
+  - Get profile by user ID
+
+Private 'profile' routes:
++ GET `/api/profile`
+  - Gets current users profile
++ POST `/api/profile`
+  - Create or edit user profile.
++ POST `/api/profile/education`
+  - Add education to profile.
++ POST `/api/profile/experience`
+  - Add experience to profile.
++ DELETE `api/profile/experience/:exp_id`
+  - Delete experience from profile
++ DELETE `api/profile/eduction/:exp_id`
+  - Delete education from profile
++ DELETE `api/profile`
+  - Delete user and profile 😭
+
+
+Public 'posts' routes:
++ GET `/api/posts/test`
+  - Tests post route
++ GET `/api/posts`
+  - Gets total posts
++ GET `/api/posts/:id`
+  - Gets posts by user ID
+
+Private 'posts' routes:
++ POST `/api/posts`
+  - Saves new post to the DB
++ POST `api/posts/like/:id`
+  - Given a postID, likes post and saves 'like' to the DB.
++ POST `api/posts/unlike/:id`
+  - Given a postID, unlikes post and deletes 'like' from the DB.
++ POST `api/posts/comment/:id`
+  - Given a commentID, adds comment to post.
++ DELETE `/api/posts/comment/:id/:comment_id`
+  - Given a commentID, deletes comment.
++ DELETE `/api/posts/:id`
+  - Given a postId, deletes post.
+
 
 ## 1.3 Code Style
 
