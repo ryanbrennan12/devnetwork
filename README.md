@@ -3,8 +3,8 @@
 Small social network app built with the MERN stack.
 
 - [1.2. Usage](#13-usage)
-    - [1.2.1. JSON Example](#123-json-example)
-    - [1.2.2. API endpoints](#121-api-endpoints)
+    - [1.2.1. JSON Examples](#121-json-examples)
+    - [1.2.2. API endpoints](#122-api-endpoints)
 - [1.3. Code Style](#13-code-style)
 - [1.4. Development Setup](#14-development-setup)
 
@@ -114,7 +114,7 @@ Example GET request JSON response to `http://localhost:5000/api/posts`
 
 ```
 
-###  1.2.2 API Endpoints
+##  1.2.2 API Endpoints
 
 Below you can find all available endpoints.
 
