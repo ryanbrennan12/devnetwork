@@ -57,7 +57,7 @@ Example GET request JSON response to `http://localhost:5000/api/profile` with ap
 Below you can find all available endpoints.
 
 
-Public 'profile' routes:
+#### Public 'profile' routes:
 + GET `/api/profile/test`
   - Tests profile route
 + GET `/api/profile/all`
@@ -67,7 +67,7 @@ Public 'profile' routes:
 + GET `/api/profile/user/:user ID`
   - Get profile by user ID
 
-Private 'profile' routes:
+#### Private 'profile' routes:
 + GET `/api/profile`
   - Gets current users profile
 + POST `/api/profile`
@@ -81,10 +81,10 @@ Private 'profile' routes:
 + DELETE `api/profile/eduction/:exp_id`
   - Delete education from profile
 + DELETE `api/profile`
-  - Delete user and profile 😭
+  - Delete user and profile
 
 
-Public 'posts' routes:
+#### Public 'posts' routes:
 + GET `/api/posts/test`
   - Tests post route
 + GET `/api/posts`
@@ -92,7 +92,7 @@ Public 'posts' routes:
 + GET `/api/posts/:id`
   - Gets posts by user ID
 
-Private 'posts' routes:
+#### Private 'posts' routes:
 + POST `/api/posts`
   - Saves new post to the DB
 + POST `api/posts/like/:id`
