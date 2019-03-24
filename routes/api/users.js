@@ -24,7 +24,6 @@ router.get('/test', (req, res) => {
 // @desc   Register User
 // @access Public
 router.post('/register', (req, res) => {
-
   const { errors, isValid } = validateRegisterInput(req.body);
 
   //Check Validation
@@ -32,7 +31,6 @@ router.post('/register', (req, res) => {
     return res.status(400).json(errors);
   }
   //first Mongoose will check if the email exists
-
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       errors.email = 'Email already exists';
@@ -43,14 +41,12 @@ router.post('/register', (req, res) => {
         r: 'pg', //rating
         d: 'mm' //Default
       });
-
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
         avatar: avatar,
         password: req.body.password
       });
-
       //generating a salt and hash on seperate function calls
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -71,6 +67,10 @@ router.post('/register', (req, res) => {
     }
   });
 });
+
+
+
+
 
 // @route  GET api/users/login
 // @desc   Login User / Returning JWT Token

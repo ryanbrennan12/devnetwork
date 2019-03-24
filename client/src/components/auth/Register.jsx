@@ -42,8 +42,15 @@ class Register extends Component {
       password: this.state.password,
       password2: this.state.password2
     };
-    console.log('we have a user!', newUser)
-    this.props.registerUser(newUser);
+
+    // this.props.registerUser(newUser);
+    //put proxy value for http://localhost:5000/api/posts in package.json
+    axios.post('api/users/register', newUser)
+      .then((result) => {
+        console.log('This is data back', result.data);
+      }).catch((err) => {
+        console.log('We have an ERROR ', err.response.data)
+      })
 
   }
   render() {
