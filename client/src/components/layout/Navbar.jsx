@@ -7,7 +7,7 @@ class Navbar extends Component {
     return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
     <div className="container">
-      <Link className="navbar-brand" to="/">HackerTown</Link>
+      <Link className="navbar-brand" to="/">HackTown</Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -22,6 +22,7 @@ class Navbar extends Component {
 
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
+            {/* Routing */}
             <Link className="nav-link" to="/register">Sign Up</Link>
           </li>
           <li className="nav-item">

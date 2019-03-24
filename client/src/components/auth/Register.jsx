@@ -16,6 +16,7 @@ class Register extends Component {
       password2: '',
       errors: {}
     };
+    //need to bind.  if not will get an error bc it wont know what 'this is'
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -41,7 +42,7 @@ class Register extends Component {
       password: this.state.password,
       password2: this.state.password2
     };
-
+    console.log('we have a user!', newUser)
     this.props.registerUser(newUser);
 
   }
@@ -58,7 +59,7 @@ class Register extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">
-                Create your HackerTown account
+                Create your HackTown account
               </p>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">

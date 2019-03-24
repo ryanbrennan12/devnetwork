@@ -23,6 +23,7 @@ class App extends Component {
             <Navbar />
 
             <Route exact path="/" component={Landing} />
+            {/* Container around everything besides Landing Page. Want Landing to go across whole screen */}
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
