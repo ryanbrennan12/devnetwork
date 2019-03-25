@@ -17,6 +17,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
+      // wrapping Provider around all the things.  Provider takes in our store
       <Provider store = { store }>
         <Router>
           <div className="App">

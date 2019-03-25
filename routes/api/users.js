@@ -67,11 +67,6 @@ router.post('/register', (req, res) => {
     }
   });
 });
-
-
-
-
-
 // @route  GET api/users/login
 // @desc   Login User / Returning JWT Token
 // @access Public
@@ -112,7 +107,6 @@ router.post('/login', (req, res) => {
     });
   });
 });
-
 // @route  GET api/users/current
 // @desc   Return Current User
 // @access Private
@@ -130,3 +124,9 @@ router.get(
 //
 
 module.exports = router;
+
+
+
+
+
+

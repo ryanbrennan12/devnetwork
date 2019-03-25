@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
+//this initial state is just a placeholder.  Don't need
 const initialState = {};
 
 const middleware = [thunk];

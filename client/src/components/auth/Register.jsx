@@ -49,7 +49,9 @@ class Register extends Component {
       .then((result) => {
         console.log('This is data back', result.data);
       }).catch((err) => {
-        console.log('We have an ERROR ', err.response.data)
+        this.setState({
+          errors: err.response.data
+        })
       })
 
   }
