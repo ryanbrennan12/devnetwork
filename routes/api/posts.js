@@ -16,7 +16,8 @@ router.get('/test', (req, res) => {
   res.json({ message: 'Posts Works!' });
 });
 
-// @route  GET api/posts
+// @route  GET api/posts'
+
 // @desc   Get posts
 // @access Public
 router.get('/', (req, res) => {
