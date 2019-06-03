@@ -8,6 +8,7 @@ const Profile = require('../../models/Profile');
 
 //Validation
 const validatePostInput = require('../../validation/post');
+console.log(`this is post, ${Post.find}`)
 
 // @route  GET api/posts/test
 // @desc   Tests posts route
