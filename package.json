@@ -24,7 +24,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "swagger": "^0.7.5",
-    "swagger-ui": "^3.22.2",
+    "swagger-ui": "^3.23.11",
     "validator": "^10.9.0"
   },
   "devDependencies": {
