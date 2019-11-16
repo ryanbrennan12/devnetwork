@@ -19,6 +19,7 @@ module.exports = function() {
     const decoded = jwt.verify(token, config.get('jwtSecret'));
     //last step???
     //decoded, and sent on the req.user
+    //
     req.user = decoded.user;
     //can now use this is any user protected route
     next();

@@ -11,3 +11,6 @@ consumes:
 produces:
   - application/json
 paths:
+  /api/users/register:
+    post:
+      summary: 'Registers a new user'

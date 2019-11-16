@@ -17,6 +17,7 @@ const User = require('../../models/User');
 // @desc   Tests posts route
 // @access Public
 router.get('/test', (req, res) => {
+  console.log('we have a request')
   res.json({ message: 'Profile Works!' });
 });
 
